@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: systemclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
+#include <unistd.h>
 #include "systemclass.h"
 
 
@@ -128,6 +129,8 @@ void SystemClass::Frame()
 	{
 		m_Network->AIMessageForClients(messageType, id);
 	}
+
+	sleep(0.03); //ограничение цыкла на 0,03 сек.
 
 	return;
 }
