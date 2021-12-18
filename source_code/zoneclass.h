@@ -30,33 +30,33 @@ const int MAX_ENTITIES = 20;
 class ZoneClass
 {
 public:
-    ZoneClass();
-    ZoneClass(const ZoneClass&);
-    ~ZoneClass();
+	ZoneClass();
+	ZoneClass(const ZoneClass&);
+	~ZoneClass();
 
-    bool Initialize();
-    void Shutdown();
-    void Frame(long);
+	bool Initialize();
+	void Shutdown();
+	void Frame(long);
 
-    void AddNewUser(unsigned short);
-    int GetEntityCount();
-    void GetEntityData(int, unsigned short&, char&, float&, float&, float&, float&, float&, float&);
-    void RemoveUser(unsigned short);
-    void SetStateChange(unsigned short, char);
-    void SetPosition(unsigned short, float, float, float, float, float, float);
-    void GetNetworkMessage(int&, unsigned short&);
-
-private:
-    void UpdateAI(long);
-    void NetworkMessage(int, unsigned short);
+	void AddNewUser(unsigned short);
+	int GetEntityCount();
+	void GetEntityData(int, unsigned short&, char&, float&, float&, float&, float&, float&, float&);
+	void RemoveUser(unsigned short);
+	void SetStateChange(unsigned short, char);
+	void SetPosition(unsigned short, float, float, float, float, float, float);
+	void GetNetworkMessage(int&, unsigned short&);
 
 private:
-    EntityClass* m_EntityList;
-    int m_entityCount;
-    long m_aiTimerOne;
-    bool m_AITrigger01;
-    int m_networkMessage;
-    unsigned short m_networkId;
+	void UpdateAI(long);
+	void NetworkMessage(int, unsigned short);
+
+private:
+	EntityClass* m_EntityList;
+	int m_entityCount;
+	long m_aiTimerOne;
+	bool m_AITrigger01;
+	int m_networkMessage;
+	unsigned short m_networkId;
 };
 
 #endif

@@ -20,21 +20,21 @@
 class SystemClass
 {
 public:
-    SystemClass();
-    SystemClass(const SystemClass&);
-    ~SystemClass();
+	SystemClass();
+	SystemClass(const SystemClass&);
+	~SystemClass();
 
-    bool Initialize();
-    void Shutdown();
-    void Frame();
+	bool Initialize();
+	void Shutdown();
+	void Frame();
 
-    bool Online();
+	bool Online();
 
 private:
-    bool m_online;
-    TimerClass* m_Timer;
-    NetworkClass* m_Network;
-    ZoneClass* m_BlackForest;
+	bool m_online;
+	TimerClass* m_Timer;
+	NetworkClass* m_Network;
+	ZoneClass* m_BlackForest;
 };
 
 #endif

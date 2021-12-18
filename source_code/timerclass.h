@@ -19,17 +19,17 @@ using namespace std;
 class TimerClass
 {
 public:
-    TimerClass();
-    TimerClass(const TimerClass&);
-    ~TimerClass();
+	TimerClass();
+	TimerClass(const TimerClass&);
+	~TimerClass();
 
-    void Initialize();
-    void Frame();
-    long GetTime();
+	void Initialize();
+	void Frame();
+	long GetTime();
 
 private:
-    struct timeval m_time;
-    long m_startTime, m_frameTime;
+	struct timeval m_time;
+	long m_startTime, m_frameTime;
 };
 
 #endif

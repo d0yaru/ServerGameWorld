@@ -25,84 +25,84 @@
 ////////////////////////////////
 // NETWORK MESSAGE STRUCTURES //
 ////////////////////////////////
-typedef struct           
-{                        
-  unsigned short type;              
+typedef struct
+{
+	unsigned short type;
 }MSG_GENERIC_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  unsigned short sessionId;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	unsigned short sessionId;
 }MSG_SIMPLE_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  unsigned short sessionId;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	unsigned short sessionId;
 }MSG_NEWID_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  unsigned short sessionId;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	unsigned short sessionId;
 }MSG_PING_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  unsigned short sessionId;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	unsigned short sessionId;
 }MSG_DISCONNECT_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  unsigned short sessionId;
-  char text[64];
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	unsigned short sessionId;
+	char text[64];
 }MSG_CHAT_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short entityId;
-  char entityType;
-  float positionX, positionY, positionZ;
-  float rotationX, rotationY, rotationZ;
+typedef struct
+{
+	unsigned short type;
+	unsigned short entityId;
+	char entityType;
+	float positionX, positionY, positionZ;
+	float rotationX, rotationY, rotationZ;
 }MSG_ENTITY_INFO_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
 }MSG_USER_DISCONNECT_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  unsigned short sessionId;
-  char state;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	unsigned short sessionId;
+	char state;
 }MSG_STATE_CHANGE_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  unsigned short sessionId;
-  float positionX, positionY, positionZ;
-  float rotationX, rotationY, rotationZ;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	unsigned short sessionId;
+	float positionX, positionY, positionZ;
+	float rotationX, rotationY, rotationZ;
 }MSG_POSITION_DATA;
 
-typedef struct           
-{                        
-  unsigned short type;
-  unsigned short idNumber;
-  bool rotate;
+typedef struct
+{
+	unsigned short type;
+	unsigned short idNumber;
+	bool rotate;
 }MSG_AI_ROTATE_DATA;
 
 #endif
