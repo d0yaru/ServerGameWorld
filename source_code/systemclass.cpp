@@ -52,7 +52,7 @@ bool SystemClass::Initialize()
 	result = m_BlackForest->Initialize();
 	if(!result)
 	{
-		cout << "Could not initialize the black forest zone object." << endl;
+		cout << "Could not initialize the black forest zone object." << endl;// Не удалось инициализировать объект зоны черного леса
 		return false;
 	}
 
@@ -70,7 +70,7 @@ bool SystemClass::Initialize()
 	result = m_Network->Initialize();
 	if(!result)
 	{
-		cout << "Could not initialize the network object." << endl;
+		cout << "Could not initialize the network object." << endl;// Не удалось инициализировать сетевой объект
 		return false;
 	}
 

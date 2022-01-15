@@ -129,7 +129,7 @@ bool NetworkClass::InitializeServerSocket()
 	m_socket = socket(AF_INET, SOCK_DGRAM, 0);
 	if(m_socket == -1)
 	{
-		cout << "Error: Could not create UDP socket." << endl;
+		cout << "Error: Could not create UDP socket." << endl;// Ошибка: Не удалось создать сокет UDP
 		return false;
 	}
 
@@ -143,7 +143,7 @@ bool NetworkClass::InitializeServerSocket()
 	error = bind(m_socket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 	if(error == -1)
 	{
-		cout << "Error: Could not bind the socket." << endl;
+		cout << "Error: Could not bind the socket." << endl;// Ошибка: Не удалось привязать сокет
 		return false;
 	}
 
@@ -153,7 +153,7 @@ bool NetworkClass::InitializeServerSocket()
 	error = ioctl(m_socket, FIONBIO, &setting);
 	if(error == -1)
 	{
-		cout << "Error: Could not set socket to non-blocking I/O." << endl;
+		cout << "Error: Could not set socket to non-blocking I/O." << endl;// Ошибка: Не удалось установить сокет на неблокирующий ввод-вывод
 		return false;
 	}
 
@@ -161,7 +161,7 @@ bool NetworkClass::InitializeServerSocket()
 	error = pthread_create(&serverThreadId, NULL, ServerListenFunction, (void*)this);
 	if(error != 0)
 	{
-		cout << "Error: Could not create thread." << endl;
+		cout << "Error: Could not create thread." << endl;// Ошибка: Не удалось создать поток
 		return false;
 	}
 
@@ -214,7 +214,7 @@ void* ServerListenFunction(void* ptr)
 		{
 			networkClassPtr->AddMessageToQueue(recvBuffer, bytesRead, clientAddress);
 		}
-
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 	
 	return 0;
@@ -230,7 +230,7 @@ void NetworkClass::AddMessageToQueue(char* message, int messageSize, struct sock
 	if(messageSize > MAX_MESSAGE_SIZE)
 	{
 		ipAddress = inet_ntoa(clientAddress.sin_addr);
-		cout << "WARNING-0001: Possible buffer overflow attack from IP: " << ipAddress << endl;
+		cout << "WARNING-0001: Possible buffer overflow attack from IP: " << ipAddress << endl;// Возможная атака переполнения буфера с IP
 
 		// Добавление метки времени в предупреждения.
 
@@ -275,33 +275,33 @@ void NetworkClass::ProcessMessageQueue()
 		{
 			case MSG_CONNECT:
 			{
-	HandleConnectMessage(m_networkMessageQueue[m_nextMessageForProcessing].address);
-	break;
+				HandleConnectMessage(m_networkMessageQueue[m_nextMessageForProcessing].address);
+				break;
 			}
 			case MSG_PING:
 			{
-	HandlePingMessage(m_nextMessageForProcessing);
-	break;
+				HandlePingMessage(m_nextMessageForProcessing);
+				break;
 			}
 			case MSG_DISCONNECT:
 			{
-	HandleDisconnectMessage(m_nextMessageForProcessing);
-	break;
+				HandleDisconnectMessage(m_nextMessageForProcessing);
+				break;
 			}
 			case MSG_CHAT:
 			{
-	HandleChatMessage(m_nextMessageForProcessing);
-	break;
+				HandleChatMessage(m_nextMessageForProcessing);
+				break;
 			}
 			case MSG_ENTITY_REQUEST:
 			{
-	HandleEntityRequestMessage(m_nextMessageForProcessing);
-	break;
+				HandleEntityRequestMessage(m_nextMessageForProcessing);
+				break;
 			}
 			case MSG_STATE_CHANGE:
 			{
-	HandleStateChangeMessage(m_nextMessageForProcessing);
-	break;
+				HandleStateChangeMessage(m_nextMessageForProcessing);
+				break;
 			}
 			case MSG_POSITION:
 			{
@@ -310,9 +310,9 @@ void NetworkClass::ProcessMessageQueue()
 			}
 			default:
 			{
-	ipAddress = inet_ntoa(m_networkMessageQueue[m_nextMessageForProcessing].address.sin_addr);
-	cout << "WARNING-0002: Received an unknown message type from IP: " << ipAddress << endl;
-	break;
+				ipAddress = inet_ntoa(m_networkMessageQueue[m_nextMessageForProcessing].address.sin_addr);
+				cout << "WARNING-0002: Received an unknown message type from IP: " << ipAddress << endl;// Получено сообщение неизвестного типа с IP
+				break;
 			}
 		}
 
@@ -428,7 +428,7 @@ void NetworkClass::HandlePingMessage(int queuePosition)
 	}
 
 	ipAddress = inet_ntoa(m_networkMessageQueue[queuePosition].address.sin_addr);
-	cout << "Received ping message from " << ipAddress << ".  Sending reply ping message." << endl;
+	//d0 cout << "Received ping message from " << ipAddress << ".  Sending reply ping message." << endl;
 
 	// Отправьте ответное сообщение ping обратно клиенту.
 	message.type = MSG_PING;
@@ -654,7 +654,7 @@ void NetworkClass::HandleStateChangeMessage(int queuePosition)
 	state = msg->state;
 
 	ipAddress = inet_ntoa(m_networkMessageQueue[queuePosition].address.sin_addr);
-	cout << "Received state change message from " << ipAddress << " : " << (int)state << endl;
+	//d0 cout << "Received state change message from " << ipAddress << " : " << (int)state << endl;
 
 	// Обновите зону с изменением состояния.
 	if(m_ZonePtr)
@@ -725,7 +725,7 @@ void NetworkClass::HandlePositionMessage(int queuePosition)
 	rotationZ = msg->rotationZ;
 
 	ipAddress = inet_ntoa(m_networkMessageQueue[queuePosition].address.sin_addr);
-	cout << "Received position message from: " << ipAddress << endl;
+	//d0 cout << "Received position message from: " << ipAddress << endl;
 
 	// Подтвердите, что позиция не является взломом.
 

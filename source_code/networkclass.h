@@ -26,6 +26,10 @@ const int MAX_CLIENTS = 1000;
 #include <pthread.h>
 #include <stdlib.h>
 #include <iostream>
+//std::this_thread::sleep_for(std::chrono::milliseconds(100));
+#include <chrono>
+#include <thread>
+//--
 using namespace std;
 
 
@@ -44,17 +48,17 @@ class NetworkClass
 private:
 	struct QueueType
 	{
-	bool active;
-	struct sockaddr_in address;
-	int size;
-	char message[MAX_MESSAGE_SIZE];
+		bool active;
+		struct sockaddr_in address;
+		int size;
+		char message[MAX_MESSAGE_SIZE];
 	};
 
 	struct ClientType
 	{
-	bool online;
-	unsigned short sessionId;
-	struct sockaddr_in clientAddress;
+		bool online;
+		unsigned short sessionId;
+		struct sockaddr_in clientAddress;
 	};
 
 public:
